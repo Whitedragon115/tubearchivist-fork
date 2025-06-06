@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     image: bbilly1/tubearchivist
     ports:
-      - 8000:8000
+      - 8010:8000
     volumes:
       - media:/youtube
       - cache:/cache
@@ -15,10 +15,10 @@ services:
       - REDIS_CON=redis://archivist-redis:6379
       - HOST_UID=1000
       - HOST_GID=1000
-      - TA_HOST=http://tubearchivist.local:8000  # set your host name with protocol and port
-      - TA_USERNAME=tubearchivist           # your initial TA credentials
-      - TA_PASSWORD=verysecret              # your initial TA credentials
-      - ELASTIC_PASSWORD=verysecret         # set password for Elasticsearch
+      - TA_HOST=http://yt.dragoncode.dev:8000  # set your host name with protocol and port
+      - TA_USERNAME=dragon          # your initial TA credentials
+      - TA_PASSWORD=whitedragon115              # your initial TA credentials
+      - ELASTIC_PASSWORD=Darklightfury115!         # set password for Elasticsearch
       - TZ=America/New_York                 # set your time zone
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
@@ -44,7 +44,7 @@ services:
     container_name: archivist-es
     restart: unless-stopped
     environment:
-      - "ELASTIC_PASSWORD=verysecret"       # matching Elasticsearch password
+      - "ELASTIC_PASSWORD=Darklightfury115!"       # matching Elasticsearch password
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
       - "xpack.security.enabled=true"
       - "discovery.type=single-node"
